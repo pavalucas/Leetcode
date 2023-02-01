@@ -1,13 +1,11 @@
 class Solution:
     def countSort(self, s: str):
-        count_map = defaultdict(int)
-        alphabet = list(string.ascii_lowercase)
+        count_list = [0] * 26
         for c in s:
-            count_map[c] += 1
+            count_list[ord(c) - 97] += 1
         result = ''
-        for let in alphabet:
-            if let in count_map:
-                result += let * count_map[let]
+        for idx, count in enumerate(count_list):
+            result += chr(idx + 97) * count
         return result
         
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
